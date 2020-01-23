@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{{#add}}Create new Product{{/add}}{{^add}}Edit Product{{/add}}</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>{{#add}}Create new Product:{{/add}}{{^add}}Edit Product:{{/add}}</h1>
+<a href="/products">Back to Product List</a>
+<br/><br/>
+<form action="{{#add}}/products/add{{/add}}{{^add}}/products/{{product.id}}/edit{{/add}}" name="product" method="POST">
+    <table border="0">
+        {{#product.id}}
+        <tr>
+            <td>ID</td>
+            <td>:</td>
+            <td>{{product.id}}</td>
+        </tr>
+        {{/product.id}}
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><input type="text" name="name" value="{{#product.name}}{{product.name}}{{/product.name}}" /></td>
+        </tr>
+        <tr>
+            <td>Brand</td>
+            <td>:</td>
+            <td><input type="text" name="email" value="{{#product.brand}}{{product.brand}}{{/product.brand}}" /></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>:</td>
+            <td><input type="text" name="phone" value="{{#product.price}}{{product.price}}{{/product.price}}" /></td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>:</td>
+            <td><input type="text" name="address" value="{{#product.quantity}}{{product.quantity}}{{/product.quantity}}" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="{{#add}}Create{{/add}}{{^add}}Update{{/add}}" />
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+</form>
+
+<br/>
+</body>
+</html>
