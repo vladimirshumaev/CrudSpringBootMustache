@@ -24,10 +24,17 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/products")
-    public String products(Map<String, Object> model) {
+    public String products(@RequestParam(required = false, defaultValue = "") String filter ,Map<String, Object> model) {
         Iterable<Product> products = productRepo.findAll();
 
+        if (filter != null && !filter.isEmpty()) {
+            products = productRepo.findByName(filter);
+        } else {
+            products = productRepo.findAll();
+        }
+
         model.put("products", products);
+        model.put("filter", filter);
 
         return "products";
     }

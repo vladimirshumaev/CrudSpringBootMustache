@@ -8,51 +8,51 @@
 <body>
 <h1>View Product</h1>
 <br/><br/>
-{{#product}}
+<#if product??>
 <table border="0">
     <tr>
         <td>ID</td>
         <td>:</td>
-        <td>{{product.id}}</td>
+        <td>${product.id}</td>
     </tr>
     <tr>
         <td>Name</td>
         <td>:</td>
-        <td>{{product.name}}</td>
+        <td>${product.name}</td>
     </tr>
     <tr>
         <td>Brand</td>
         <td>:</td>
-        <td>{{product.brand}}</td>
+        <td>${product.brand}</td>
     </tr>
     <tr>
     <td>Price</td>
     <td>:</td>
-    <td>{{#product.price}}{{product.price}}{{/product.price}}</td>
+    <td><#if product.quantity??>${product.price}</#if></td>
     </tr>
     <tr>
     <td>Quantity</td>
     <td>:</td>
-    <td>{{#product.quantity}}{{product.quantity}}{{/product.quantity}}</td>
+    <td><#if product.quantity??>${product.quantity}</#if></td>
     </tr>
 </table>
 <br/><br/>
-{{#allowDelete}}
-<form action="/products/{{product.id}}/delete" method="POST">
+<#if allowDelete??>
+<form action="/products/${product.id}/delete" method="POST">
     Delete this user? <input type="submit" value="Yes"/>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="hidden" name="_csrf" value="${_csrf.token}" />
 </form>
-{{/allowDelete}}
-{{^allowDelete}}
+</#if>
+<#if allowDelete??>
 <div>
-    <a href="/products/{{product.id}}/edit">Edit</a> |
-    <a href="/products/{{product.id}}/delete">Delete</a>
+    <a href="/products/${product.id}/edit">Edit</a> |
+    <a href="/products/${product.id}/delete">Delete</a>
 </div>
-{{/allowDelete}}
-{{/product}}
-{{#errorMessage}}
+</#if>
+</#if>
+<#if errorMessage??>
 <div class="error">{{errorMessage}}</div>
-{{/errorMessage}}
+</#if>
 
 </body>
 </html>

@@ -1,3 +1,5 @@
+<#import "parts/login.ftl" as c>
+
 <html>
 <head>
     <title>Books Page</title>
@@ -43,16 +45,23 @@
 </head>
 <body>
 
+<@c.logout/>
+
 <div>
     <form method="post" >
         <input type="text" name="name" placeholder="Введите название"/>
         <input type="text" name="brand" placeholder="Брэнд">
         <input type="number"  name="price" placeholder="Цена">
         <input type="number"  name="quantity" placeholder="Кол-во">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit">Добавить</button>
     </form>
 </div>
+<div>Список сообщений</div>
+    <form method="get" action="/products">
+        <input type="text" name="filter" value="${filter}">
+        <button type="submit">Найти</button>
+    </form>
 <table class="tg">
     <tr>
         <th width="80">ID</th>
@@ -61,19 +70,21 @@
         <th width="120">PRICE</th>
         <th width="60">QUANTITY</th>
         <th width="60">Edit</th>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     </tr>
-    {{#products}}
+    <#list products as product>
         <tr>
-            <td><span>{{id}}</span></td>
-            <td><span>{{name}}</span></td>
-            <td><span>{{brand}}</span></td>
-            <td><span>{{price}}</span></td>
-            <td><span>{{quantity}}</span></td>
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-            <td><span><a href="/products/{{id}}" >Edit</a></span></td>
+            <td><span>${product.id}</span></td>
+            <td><span>${product.name}</span></td>
+            <td><span>${product.brand}</span></td>
+            <td><span>${product.price}</span></td>
+            <td><span>${product.quantity}</span></td>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <td><span><a href="/products/${product.id}" >Edit</a></span></td>
         </tr>
-    {{/products}}
+    <#else>
+        No products
+    </#list>
 </table>
 <br>
 <a href="/leftovers">Page with leftovers</a>
