@@ -46,9 +46,10 @@
 <body>
 
 <@c.logout/>
-
+<span><a href="/user">User List</a> </span>
+<br/>
 <div>
-    <form method="post" >
+    <form method="post" action="/products">
         <input type="text" name="name" placeholder="Введите название"/>
         <input type="text" name="brand" placeholder="Брэнд">
         <input type="number"  name="price" placeholder="Цена">
@@ -59,7 +60,7 @@
 </div>
 <div>Список сообщений</div>
     <form method="get" action="/products">
-        <input type="text" name="filter" value="${filter}">
+        <input type="text" name="filter" value="<#if filter??>${filter}</#if>">
         <button type="submit">Найти</button>
     </form>
 <table class="tg">
@@ -70,6 +71,7 @@
         <th width="120">PRICE</th>
         <th width="60">QUANTITY</th>
         <th width="60">Edit</th>
+        <th width="60">Author</th>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     </tr>
     <#list products as product>
@@ -79,8 +81,9 @@
             <td><span>${product.brand}</span></td>
             <td><span>${product.price}</span></td>
             <td><span>${product.quantity}</span></td>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <td><span><a href="/products/${product.id}" >Edit</a></span></td>
+            <td><span>${product.authorName}</span></td>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </tr>
     <#else>
         No products

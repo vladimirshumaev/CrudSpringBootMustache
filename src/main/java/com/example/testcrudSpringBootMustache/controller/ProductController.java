@@ -1,9 +1,11 @@
 package com.example.testcrudSpringBootMustache.controller;
 
 import com.example.testcrudSpringBootMustache.domain.Product;
+import com.example.testcrudSpringBootMustache.domain.User;
 import com.example.testcrudSpringBootMustache.repos.ProductRepo;
 import com.example.testcrudSpringBootMustache.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,13 +43,14 @@ public class ProductController {
 
     @PostMapping("/products")
     public String addProduct(
+            @AuthenticationPrincipal User user,
             @RequestParam String name,
             @RequestParam String brand,
             @RequestParam Integer price,
             @RequestParam Integer quantity,
             Map<String, Object> model) {
 
-        Product product = new Product(name, brand, price, quantity);
+        Product product = new Product(name, brand, price, quantity, user);
 
         productRepo.save(product);
         Iterable<Product> products = productRepo.findAll();

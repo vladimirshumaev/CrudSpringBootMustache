@@ -10,12 +10,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String brand, int price, int quantity) {
+    public Product(String name, String brand, int price, int quantity, User author) {
 
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.quantity = quantity;
+        this.author = author;
     }
 
     @Id
@@ -26,8 +27,27 @@ public class Product {
 
     private String brand;
 
+    private int price;
+
+    private int quantity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
     }
 
     public Long getId() {
@@ -62,11 +82,6 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    private int price;
-
-
-    private int quantity;
 
     public int getQuantity() {
         return quantity;
