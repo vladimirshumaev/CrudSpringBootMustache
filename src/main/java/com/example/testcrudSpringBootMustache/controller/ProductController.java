@@ -50,7 +50,7 @@ public class ProductController {
             @RequestParam Integer quantity,
             Map<String, Object> model) {
 
-        Product product = new Product(name, brand, price, quantity, user);
+        Product product  = new Product(name, brand, price, quantity, user);
 
         productRepo.save(product);
         Iterable<Product> products = productRepo.findAll();
