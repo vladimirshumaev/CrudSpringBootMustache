@@ -1,68 +1,41 @@
-<#import "parts/login.ftl" as c>
+<#import "parts/common.ftl" as l>
 
-<html>
-<head>
-    <title>Books Page</title>
+<@l.page>
 
-    <style type="text/css">
-        .tg {
-            border-collapse: collapse;
-            border-spacing: 0;
-            border-color: #ccc;
-        }
-
-        .tg td {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding: 10px 5px;
-            border-style: solid;
-            border-width: 1px;
-            overflow: hidden;
-            word-break: normal;
-            border-color: #ccc;
-            color: #333;
-            background-color: #fff;
-        }
-
-        .tg th {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: normal;
-            padding: 10px 5px;
-            border-style: solid;
-            border-width: 1px;
-            overflow: hidden;
-            word-break: normal;
-            border-color: #ccc;
-            color: #333;
-            background-color: #f0f0f0;
-        }
-
-        .tg .tg-4eph {
-            background-color: #f9f9f9
-        }
-    </style>
-</head>
-<body>
-
-<@c.logout/>
-<span><a href="/user">User List</a> </span>
 <br/>
-<div>
-    <form method="post" action="/products">
-        <input type="text" name="name" placeholder="Введите название"/>
-        <input type="text" name="brand" placeholder="Брэнд">
-        <input type="number"  name="price" placeholder="Цена">
-        <input type="number"  name="quantity" placeholder="Кол-во">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Добавить</button>
-    </form>
+<div class="form-row ">
+    <div class="form-group col-md-12">
+        <form method="get" action="/products" class="form-inline">
+            <input type="text" name="filter" class="form-control" value="<#if filter??>${filter}</#if>">
+            <button type="submit" class="btn btn-primary ml-2" >Search</button>
+        </form>
+    <div/>
+<div/>
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Add new Product
+</a>
+<div class="collapse" id="collapseExample">
+    <div class="form-group mt-3">
+        <form method="post" action="/products">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Введите название"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="brand" class="form-control" placeholder="Брэнд">
+            </div>
+            <div class="form-group">
+                <input type="number"  name="price" class="form-control" placeholder="Цена">
+            </div>
+            <div class="form-group">
+                <input type="number"  name="quantity" class="form-control" placeholder="Кол-во">
+            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
 </div>
-<div>Список сообщений</div>
-    <form method="get" action="/products">
-        <input type="text" name="filter" value="<#if filter??>${filter}</#if>">
-        <button type="submit">Найти</button>
-    </form>
+
+
 <table class="tg">
     <tr>
         <th width="80">ID</th>
@@ -91,5 +64,4 @@
 </table>
 <br>
 <a href="/leftovers">Page with leftovers</a>
-</body>
-</html>
+</@l.page>
