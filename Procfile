@@ -1,0 +1,1 @@
+web: java -jar target/TestCrudSpringBootMustache-1.0-SNAPSHOT.jar
