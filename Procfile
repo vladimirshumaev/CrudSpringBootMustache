@@ -1,1 +1,1 @@
-web: java -jar target/TestCrudSpringBootMustache-1.0-SNAPSHOT.war
+web: java -Dserver.port=$PORT -jar target/TestCrudSpringBootMustache-1.0-SNAPSHOT.war
