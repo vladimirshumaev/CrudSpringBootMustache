@@ -20,6 +20,9 @@
                 <a class="nav-link" href="/user">User list </span></a>
             </li>
             </#if>
+            <li class="nav-item">
+                <a class="nav-link" href="/messages">Messages</span></a>
+            </li>
         </ul>
 
         <div class="navbar-text mr-3" >${name}</div>

@@ -10,6 +10,14 @@ create table product (
   primary key (id)
   );
 
+create table message (
+  id int8 not null,
+  text varchar(2048),
+  tag varchar(255),
+  user_id int8,
+  primary key (id)
+);
+
 create table user_role (
   user_id int8 not null,
   roles varchar(255)
