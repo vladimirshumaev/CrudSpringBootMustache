@@ -1,3 +1,4 @@
+<#include "parts/security.ftl">
 <#import "parts/common.ftl" as l>
 
 <@l.page>
@@ -37,6 +38,7 @@
                 <th width="120">TEXT</th>
                 <th width="120">TAG</th>
                 <th width="60">Author</th>
+                <th width="60">Edit</th>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             </tr>
             <#list messages as message>
@@ -45,6 +47,7 @@
                     <td><span>${message.text}</span></td>
                     <td><span>${message.tag}</span></td>
                     <td><span>${message.authorName}</span></td>
+                    <td><span><a href="/messages/${message.id}/edit">Edit</a></span></td>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 </tr>
             <#else>
