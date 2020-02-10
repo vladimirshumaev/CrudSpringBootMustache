@@ -1,7 +1,6 @@
 package com.example.testcrudSpringBootMustache.controller;
 
 import com.example.testcrudSpringBootMustache.domain.Message;
-import com.example.testcrudSpringBootMustache.domain.Product;
 import com.example.testcrudSpringBootMustache.domain.User;
 import com.example.testcrudSpringBootMustache.repos.MessageRepo;
 import org.slf4j.Logger;
@@ -27,12 +26,20 @@ public class MessageController {
 
 
     @GetMapping("/messages")
-    public String messages(Map<String, Object> model, @AuthenticationPrincipal User user) {
-        Iterable<Message> messages = messageRepo.findAll();
+    public String messages(Map<String, Object> model
+            , @RequestParam(required = false, defaultValue = "") String filter
+            , @AuthenticationPrincipal User user) {
 
+        Iterable<Message> messages = messageRepo.findAll();
+        if (filter != null && !filter.isEmpty()) {
+            messages = messageRepo.findByText(filter);
+        } else {
+            messages = messageRepo.findAll();
+        }
 
         model.put("messages", messages);
         model.put("user", user);
+        model.put("filter", filter);
 
         return "messages";
     }

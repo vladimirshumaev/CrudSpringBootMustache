@@ -8,12 +8,12 @@
     <div class="form-row ">
         <div class="form-group col-md-12">
             <form method="get" action="/messages" class="form-inline">
-                <input type="text" name="filter" class="form-control" value="<#if filter??>${filter}</#if>">
+                <input type="text" name="filter" class="form-control" value="<#if filter??>${filter}</#if>"/>
                 <button type="submit" class="btn btn-primary ml-2" >Search</button>
             </form>
-            <div/>
-        <div/>
-    <div class="form-group col-md-12">
+        </div>
+    </div>
+    <div class="form-group col-md-12" >
         <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Add new Message
         </a>
@@ -24,7 +24,7 @@
                         <input type="text" name="text" class="form-control" placeholder="Введите сообщение"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="tag" class="form-control" placeholder="Тег">
+                        <input type="text" name="tag" class="form-control" placeholder="Тег"/>
                     </div>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-primary">Add</button>
@@ -42,7 +42,7 @@
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             </tr>
             <#list messages as message>
-                <tr>
+                <tr id="message-list" data-id="${message.id}">
                     <td><span>${message.id}</span></td>
                     <td><span>${message.text}</span></td>
                     <td><span>${message.tag}</span></td>
@@ -54,5 +54,7 @@
                 No messages
             </#list>
         </table>
-        <br>
+        <br/>
+    </div>
+</div>
 </@l.page>

@@ -74,76 +74,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
-
-    <!--<profiles>-->
-
-        <!--<profile>-->
-            <!--<id>postgres</id>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.postgresql</groupId>-->
-                    <!--<artifactId>postgresql</artifactId>-->
-                    <!--<version>${postgresql.version}</version>-->
-                <!--</dependency>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.apache.tomcat</groupId>-->
-                    <!--<artifactId>tomcat-jdbc</artifactId>-->
-                    <!--<version>${tomcat.version}</version>-->
-                    <!--<scope>provided</scope>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
-            <!--<activation>-->
-                <!--<activeByDefault>true</activeByDefault>-->
-            <!--</activation>-->
-        <!--</profile>-->
-        <!--<profile>-->
-            <!--<id>heroku</id>-->
-            <!--&lt;!&ndash;https://devcenter.heroku.com/articles/java-webapp-runner            &ndash;&gt;-->
-            <!--<build>-->
-                <!--<plugins>-->
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                        <!--<version>3.1.1</version>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<phase>package</phase>-->
-                                <!--<goals>-->
-                                    <!--<goal>copy</goal>-->
-                                <!--</goals>-->
-                                <!--<configuration>-->
-                                    <!--<artifactItems>-->
-                                        <!--&lt;!&ndash;https://github.com/jsimone/webapp-runner#using-without-memcached-or-redis&ndash;&gt;-->
-                                        <!--<artifactItem>-->
-                                            <!--<groupId>com.github.jsimone</groupId>-->
-                                            <!--<artifactId>webapp-runner-main</artifactId>-->
-                                            <!--<version>9.0.27.1</version>-->
-                                            <!--<destFileName>webapp-runner.jar</destFileName>-->
-                                        <!--</artifactItem>-->
-                                    <!--</artifactItems>-->
-                                <!--</configuration>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                    <!--</plugin>-->
-                <!--</plugins>-->
-            <!--</build>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.postgresql</groupId>-->
-                    <!--<artifactId>postgresql</artifactId>-->
-                    <!--<version>${postgresql.version}</version>-->
-                <!--</dependency>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.apache.tomcat</groupId>-->
-                    <!--<artifactId>tomcat-jdbc</artifactId>-->
-                    <!--<version>${tomcat.version}</version>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
-        <!--</profile>-->
-    <!--</profiles>-->
 
     <properties>
         <!--<java.version>1.11</java.version>-->

@@ -10,18 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</span></a>
+                <a class="nav-link" href="/"><span>Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/products">Products</span></a>
+                <a class="nav-link" href="/products"><span>Products</span></a>
             </li>
             <#if isAdmin>
             <li class="nav-item">
-                <a class="nav-link" href="/user">User list </span></a>
+                <a class="nav-link" href="/user"><span>User list</span></a>
             </li>
             </#if>
             <li class="nav-item">
-                <a class="nav-link" href="/messages">Messages</span></a>
+                <a class="nav-link" href="/messages"><span>Messages</span></a>
             </li>
         </ul>
 
