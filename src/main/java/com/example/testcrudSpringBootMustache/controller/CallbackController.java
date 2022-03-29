@@ -26,8 +26,15 @@ public class CallbackController {
 
     @PostMapping("/callback")
     public String addMessage(@RequestBody Map<String, String> callbackParams) {
+        String json = "{ \n";
+        for (Map.Entry entry : callbackParams.entrySet()) {
+            System.out.println(entry);
+            json = json + "\"" + entry.getKey() + "\":\"" + entry.getValue() + "\"," ;
+        }
+        json = json.substring(0, json.length() - 1);
+        json = json + " }";
 
-        Message message = new Message(callbackParams.toString(), "tag", null);
+        Message message = new Message(json, "tag", null);
 
         messageRepo.save(message);
 

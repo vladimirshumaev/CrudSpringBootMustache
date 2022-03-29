@@ -38,8 +38,7 @@ public class Message {
         return "Message{" +
             "id=" + id +
             ", text='" + text + '\'' +
-            ", tag='" + tag + '\'' +
-            ", author=" + author +
+
             '}' + "\n";
     }
 
