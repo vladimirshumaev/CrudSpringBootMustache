@@ -33,6 +33,16 @@ public class Message {
         return author;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+            "id=" + id +
+            ", text='" + text + '\'' +
+            ", tag='" + tag + '\'' +
+            ", author=" + author +
+            '}';
+    }
+
     public String getAuthorName() {
         return author != null ? author.getUsername() : "<none>";
     }

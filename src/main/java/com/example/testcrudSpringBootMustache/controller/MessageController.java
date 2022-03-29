@@ -6,7 +6,7 @@ import com.example.testcrudSpringBootMustache.repos.MessageRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +28,8 @@ public class MessageController {
     @GetMapping("/messages")
     public String messages(Map<String, Object> model
             , @RequestParam(required = false, defaultValue = "") String filter
-            , @AuthenticationPrincipal User user) {
+//            , @AuthenticationPrincipal User user
+    ) {
 
         Iterable<Message> messages = messageRepo.findAll();
         if (filter != null && !filter.isEmpty()) {
@@ -38,7 +39,7 @@ public class MessageController {
         }
 
         model.put("messages", messages);
-        model.put("user", user);
+//        model.put("user", user);
         model.put("filter", filter);
 
         return "messages";
@@ -46,12 +47,12 @@ public class MessageController {
 
     @PostMapping("/messages")
     public String addMessage(
-            @AuthenticationPrincipal User user,
+//            @AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag,
             Map<String, Object> model) {
 
-        Message message = new Message(text, tag, user);
+        Message message = new Message(text, tag, null);
 
         messageRepo.save(message);
         Iterable<Message> messages = messageRepo.findAll();
