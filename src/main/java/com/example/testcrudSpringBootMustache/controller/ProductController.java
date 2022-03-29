@@ -122,6 +122,11 @@ public String showEditProduct(Model model, @PathVariable long Id) {
     model.addAttribute("product", product);
     return "product-edit";
 }
+    @GetMapping(value = {"/callback"})
+public String callback() {
+   
+    return "TEST_CALLBACK";
+}
 
     @PostMapping(value = {"/products/{Id}/edit"})
     public String updateProduct(Model model,
