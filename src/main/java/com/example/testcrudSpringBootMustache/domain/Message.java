@@ -40,7 +40,7 @@ public class Message {
             ", text='" + text + '\'' +
             ", tag='" + tag + '\'' +
             ", author=" + author +
-            '}';
+            '}' + "\n";
     }
 
     public String getAuthorName() {
